@@ -15,7 +15,8 @@ class Program
             Console.WriteLine("1. Ruta más barata");
             Console.WriteLine("2. Ruta con menos escalas");
             Console.WriteLine("3. Rutas bajo presupuesto");
-            Console.WriteLine("4. Salir");
+            Console.WriteLine("4. Ver todas las rutas y sus costos");
+            Console.WriteLine("5. Salir");
             Console.Write("Seleccione una opción: ");
 
             var opcion = Console.ReadLine()?.Trim();
@@ -76,6 +77,10 @@ class Program
                 }
             }
             else if (opcion == "4")
+            {
+                grafo.MostrarTodasLasRutas();
+            }
+            else if (opcion == "5")
             {
                 Console.WriteLine("Saliendo...");
                 break;

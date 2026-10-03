@@ -47,6 +47,23 @@ class GrafoVuelos
             AgregarVuelo(vuelo);
     }
 
+    public void MostrarTodasLasRutas()
+    {
+        Console.WriteLine("\n=== RUTAS REGISTRADAS Y SUS COSTOS ===");
+        Console.WriteLine($"{"ORIGEN",-12} {"DESTINO",-12} {"PRECIO",10} {"DURACIÓN",12}  AEROLÍNEA");
+
+        foreach (var vuelo in ady.Values
+                     .SelectMany(vuelos => vuelos)
+                     .OrderBy(vuelo => vuelo.Origen)
+                     .ThenBy(vuelo => vuelo.Destino))
+        {
+            Console.WriteLine(
+                $"{vuelo.Origen,-12} {vuelo.Destino,-12} ${vuelo.Precio,9:F2} {vuelo.Duracion,9} min  {vuelo.Aerolinea}");
+        }
+
+        Console.WriteLine($"\nTotal de rutas registradas: {ady.Values.Sum(vuelos => vuelos.Count)}");
+    }
+
     public (double? Costo, List<Vuelo> Tramos) RutaMasBarata(string origen, string destino)
     {
         var inicio = origen.Trim().ToUpperInvariant();
