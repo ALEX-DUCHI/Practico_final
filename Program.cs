@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-record Vuelo(string Origen, string Destino, double Precio, int Duracion, string Aerolinea);
-
 class GrafoVuelos
 {
     private readonly Dictionary<string, List<Vuelo>> ady = new(StringComparer.OrdinalIgnoreCase);
